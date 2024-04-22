@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menumatbert_model">
+    <property name="title">
+     <string>matbert-model </string>
+    </property>
+    <addaction name="actionmodel_path"/>
+    <addaction name="actionmodel_umap"/>
+    <addaction name="actionmodel_plot"/>
+    <addaction name="actioncosine_similarity"/>
+   </widget>
+   <widget class="QMenu" name="menuSave_path">
+    <property name="title">
+     <string>Save path</string>
+    </property>
+    <addaction name="actionSave_path"/>
+   </widget>
+   <addaction name="menuSave_path"/>
+   <addaction name="menumatbert_model"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionmodel_umap">
+   <property name="text">
+    <string>umap</string>
+   </property>
+  </action>
+  <action name="actionmodel_plot">
+   <property name="text">
+    <string>plot</string>
+   </property>
+  </action>
+  <action name="actioncosine_similarity">
+   <property name="text">
+    <string>cosine similarity ranking</string>
+   </property>
+  </action>
+  <action name="actionSave_path">
+   <property name="text">
+    <string>Save path</string>
+   </property>
+  </action>
+  <action name="actionmodel_path">
+   <property name="text">
+    <string>model path</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
