@@ -20,7 +20,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menumatbert_model">
@@ -38,8 +38,15 @@
     </property>
     <addaction name="actionSave_path"/>
    </widget>
+   <widget class="QMenu" name="menuchemdataextractor">
+    <property name="title">
+     <string>chemdataextractor</string>
+    </property>
+    <addaction name="actioncsv_clean"/>
+   </widget>
    <addaction name="menuSave_path"/>
    <addaction name="menumatbert_model"/>
+   <addaction name="menuchemdataextractor"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionmodel_umap">
@@ -65,6 +72,11 @@
   <action name="actionmodel_path">
    <property name="text">
     <string>model path</string>
+   </property>
+  </action>
+  <action name="actioncsv_clean">
+   <property name="text">
+    <string>csv clean</string>
    </property>
   </action>
  </widget>

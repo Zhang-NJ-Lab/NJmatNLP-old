@@ -25,7 +25,8 @@ class NLPUI(QMainWindow):
         self.actionmodel_plot.triggered.connect(self.show_model_plot)
         self.actioncosine_similarity.triggered.connect(self.model_cosine_similarity_csv)
         self.actionSave_path.triggered.connect(self.choose_save_path)  # 绑定保存路径按钮
-
+        # csv_clean
+        self.actioncsv_clean.triggered.connect(self.csv_clean)
         self.tokenizer = None
         self.model = None
         self.model_path = None
@@ -471,6 +472,56 @@ class NLPUI(QMainWindow):
             print(e)
 
 
+
+
+
+
+
+
+
+    def csv_clean(self):
+
+        import shutil
+        mat_path = self.save_path + "/matbert"
+        if os.path.exists(mat_path):
+            shutil.rmtree(mat_path)
+        os.makedirs(mat_path)
+
+
+        try:
+            file_path, _ = QFileDialog.getOpenFileName(self, '选择 CSV 文件', '', 'CSV files (*.csv)')
+
+            import pandas as pd
+            from chemdataextractor import Document
+
+            # 读取 CSV 文件
+            df = pd.read_csv(file_path)
+
+            # 提取第一列数据
+            column_data = df.iloc[:, 0]
+
+            # 定义函数来识别化学物质
+            def is_chemical(entity):
+                doc = Document(entity)
+                chem_entities = doc.cems
+                return len(chem_entities) > 0
+
+            # 创建新列来表示化学物质
+            df['Chemical'] = column_data.apply(lambda x: 1 if is_chemical(x) else 0)
+
+            # 删除最后一列是 0 的整行
+            df = df[df.iloc[:, -1] != 0]
+
+            # 删除最后一列
+            df = df.drop(df.columns[-1], axis=1)
+
+            # 保存结果到新的CSV文件，命名为 clean.csv
+            df.to_csv(mat_path + "/clean.csv", index=False)
+
+            str1 = (mat_path + '/clean.csv').replace("/", "\\")
+            os.startfile(str1)
+        except Exception as e:
+            print(e)
 
 
 if __name__ == "__main__":
